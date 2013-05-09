@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import me.fantouch.libs.multiviewpager.RefImgDownloader;
+
 import net.tsz.afinal.FinalBitmap;
 
 /**
@@ -22,6 +24,7 @@ public class PagerActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         fb = FinalBitmap.create(this);
         fb.configCompressFormat(Bitmap.CompressFormat.PNG);
         fb.configDownlader(new RefImgDownloader(this));
@@ -48,11 +51,15 @@ public class PagerActivity extends Activity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            ImageView imageView = new ImageView(PagerActivity.this);
-            container.addView(imageView);
+            View item = View.inflate(PagerActivity.this, R.layout.item, null);
+            ImageView imageView = (ImageView) item.findViewById(R.id.imgView);
+            // TextView tv=(TextView) item.findViewById(R.id.txtView);
+
             fb.display(imageView, "http://192.168.1.106:88/drawable/img" + (position + 1) +
                     ".jpg");
-            return imageView;
+
+            container.addView(item);
+            return item;
         }
 
         @Override
@@ -62,7 +69,7 @@ public class PagerActivity extends Activity {
 
         @Override
         public int getCount() {
-            return 20;
+            return 22;
         }
 
         @Override
