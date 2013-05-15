@@ -4,5 +4,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="page_margin">16dp</dimen>
+    
+    <dimen name="bitmapMaxWidth">100dp</dimen>
+    <dimen name="bitmapMaxHeight">150dp</dimen>
+    <dimen name="pageMargin">10dp</dimen>
 
 </resources>
